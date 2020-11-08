@@ -1,3 +1,8 @@
+provider "aws" {  
+  region = "ca-central-1"
+}
+
+
 resource "aws_spot_instance_request" "cheap_worker" {
   ami           = "ami-0dbd6ff6270bd154d"
   spot_price    = "0.02"
@@ -6,7 +11,7 @@ resource "aws_spot_instance_request" "cheap_worker" {
     volume_size = "25"
   }
   key_name = "ec2"
-  user_data = file("script.sh")
+  # user_data = file("script.sh")
   security_groups = ["launch-wizard-4"]
 
   tags = {
@@ -14,6 +19,6 @@ resource "aws_spot_instance_request" "cheap_worker" {
   }
 }
 
-output "public ipadress" {
+output "public-ipadress" {
   value = aws_spot_instance_request.cheap_worker.public_ip
 }
