@@ -14,6 +14,6 @@ resource "aws_spot_instance_request" "cheap_worker" {
   }
 }
 
-output "ipadress" {
+output "public ipadress" {
   value = aws_spot_instance_request.cheap_worker.public_ip
 }
